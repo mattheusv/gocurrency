@@ -38,6 +38,6 @@ func Routers() {
 	router.HandleFunc("/api/currencys", GetCurrencys).Methods("GET")
 	router.HandleFunc("/api/currencys/{currency}", GetOneCurrency).Methods("GET")
 
-	fmt.Println("Initializing server...")
+	fmt.Println("Server running on localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
