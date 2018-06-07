@@ -18,5 +18,10 @@ before_script:
   - go get github.com/gorilla/mux
   - go get github.com/PuerkitoBio/goquery
 
+  install: 
+    - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
+    - export PATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace/bin:$PATH"
+
+
 script: 
   - go test -v ./tests/
