@@ -3,6 +3,7 @@ package scraping
 import (
 	"fmt"
 	"log"
+	"strconv"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
@@ -42,17 +43,28 @@ var currencys = map[string]string{
 	"yuan":              "https://dolarhoje.com/yuan-hoje/",
 }
 
-func links(currency string) (link string, err bool) {
-	link = currencys[currency]
-	if link == "" {
-		return "", false
+// 1 if you want to get digital currencys, or 0 if you want to get "normal" currencys
+func links(currency string, typeCurrency int) (link string, err bool) {
+	if typeCurrency == 1 {
+		link = digitalCurrencys[currency]
+		if link == "" {
+			return "", false
+		}
+		return link, true
+	} else if typeCurrency == 0 {
+		link = currencys[currency]
+		if link == "" {
+			return "", false
+		}
+		return link, true
 	}
-	return link, true
+
+	return "", false
 }
 
 // GetCurrrency get determinate currency
-func GetCurrrency(currency string) Currency {
-	curr, erro := links(currency)
+func GetCurrrency(currency string, typeCurrency int) Currency {
+	curr, erro := links(currency, typeCurrency)
 
 	if erro == false {
 		return Currency{}
@@ -72,13 +84,24 @@ func GetCurrrency(currency string) Currency {
 }
 
 // GetAllCurrency get all currencys
-func GetAllCurrency(curr *[]Currency, done chan bool) {
+func GetAllCurrency(curr *[]Currency, typeCurrency int, done chan bool) {
 	defer func() {
 		done <- true
 	}()
 	currentDate := time.Now().Local()
-	for key := range currencys {
-		c := GetCurrrency(key)
-		*curr = append(*curr, Currency{key, c.Value, currentDate.Format("2006-01-02")})
+	if typeCurrency == 1 {
+		for key := range digitalCurrencys {
+			c := GetCurrrency(key, typeCurrency)
+			*curr = append(*curr, Currency{key, c.Value, currentDate.Format("2006-01-02")})
+		}
+	} else if typeCurrency == 0 {
+		for key := range currencys {
+			c := GetCurrrency(key, typeCurrency)
+			*curr = append(*curr, Currency{key, c.Value, currentDate.Format("2006-01-02")})
+		}
+	} else {
+		fmt.Println("Invalid parameter " + strconv.Itoa(typeCurrency))
+		*curr = append(*curr, Currency{})
 	}
+
 }
