@@ -1,7 +1,7 @@
 package tests
 
 import (
-	"currency-quote-api/scraping"
+	"github.com/matheussilva97/currency-quote-api/scraping"
 	"testing"
 )
 

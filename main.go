@@ -1,7 +1,7 @@
 package main
 
 import (
-	"currency-quote-api/api"
+	"github.com/matheussilva97/currency-quote-api/api"
 )
 
 func main() {

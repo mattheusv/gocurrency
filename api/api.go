@@ -1,11 +1,12 @@
 package api
 
 import (
-	"currency-quote-api/scraping"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/matheussilva97/currency-quote-api/scraping"
 
 	"github.com/gorilla/mux"
 )
