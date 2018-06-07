@@ -1,0 +1,15 @@
+sudo: false
+
+language: go
+
+go:
+  -  1.10.2
+
+notifications:
+    email: false
+
+before_script:
+  - go vet ./...
+
+script: 
+  - go test -v ./tests/
