@@ -1,8 +1,9 @@
 package tests
 
 import (
-	"currency-quote-api/scraping"
 	"testing"
+
+	"github.com/matheussilva97/currency-quote-api/scraping"
 )
 
 func TestGetCurrrencyDolar(t *testing.T) {
