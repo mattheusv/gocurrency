@@ -25,6 +25,7 @@ var digitalCurrencys = map[string]string{
 	"bitshares":             "https://dolarhoje.com/bitshares-hoje/",
 	"bytecoin":              "https://dolarhoje.com/bytecoin-hoje/",
 	"bytom":                 "https://dolarhoje.com/bytom-hoje/",
+	/*add more digital currencys*/
 }
 
 var currencys = map[string]string{
@@ -41,6 +42,7 @@ var currencys = map[string]string{
 	"peso uruguaio":     "https://dolarhoje.com/peso-uruguaio/",
 	"won sul-coreano":   "https://dolarhoje.com/won-sul-coreano-hoje/",
 	"yuan":              "https://dolarhoje.com/yuan-hoje/",
+	/*add more currencys*/
 }
 
 // 1 if you want to get digital currencys, or 0 if you want to get "normal" currencys
