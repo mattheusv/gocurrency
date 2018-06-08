@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/matheussilva97/currency-quote-api/scraping"
 
@@ -69,5 +70,5 @@ func Routers() {
 	router.HandleFunc("/api/digital/currencys/{currency}", GetOneDigitalCurrencys).Methods("GET")
 
 	fmt.Println("Server running on http://127.0.0.1:8080/")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
 }
