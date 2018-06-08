@@ -1,6 +1,6 @@
 package main
 
-import "currency-quote-api/api"
+import "github.com/matheussilva97/currency-quote-api/api"
 
 func main() {
 	api.Routers()
