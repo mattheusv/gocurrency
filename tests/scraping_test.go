@@ -136,10 +136,8 @@ func TestGetCurrrencyYuan(t *testing.T) {
 }
 
 func TestGetAllCurrrencyt(t *testing.T) {
-	done := make(chan bool)
 	currency := []scraping.Currency{}
-	go scraping.GetAllCurrency(&currency, 0, done)
-	<-done
+	scraping.GetAllCurrency(&currency, 0)
 
 	if currency == nil {
 		t.Fatalf("[FAILED] - Function retun nil to get all currencys")
@@ -223,10 +221,8 @@ func TestGetBytom(t *testing.T) {
 }
 
 func TestGetAllDigitalCurrrencyt(t *testing.T) {
-	done := make(chan bool)
 	currency := []scraping.Currency{}
-	go scraping.GetAllCurrency(&currency, 1, done)
-	<-done
+	scraping.GetAllCurrency(&currency, 1)
 
 	if currency == nil {
 		t.Fatalf("[FAILED] - Function retun nil to get all currencys")
