@@ -5,20 +5,16 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
-
-	"github.com/matheussilva97/currency-quote-api/scraping"
 
 	"github.com/gorilla/mux"
+	"github.com/matheussilva97/currency-quote-api/scraping"
 )
 
 // GetCurrencys get all currencys
 func GetCurrencys(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	curr := []scraping.Currency{}
-	done := make(chan bool)
-	go scraping.GetAllCurrency(&curr, 0, done)
-	<-done
+	scraping.GetAllCurrency(&curr, 0)
 	currArray := map[string][]scraping.Currency{
 		"currencys": curr,
 	}
@@ -38,11 +34,9 @@ func GetOneCurrency(w http.ResponseWriter, r *http.Request) {
 
 // GetDigitalCurrencys get all digital currencys
 func GetDigitalCurrencys(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Contenty-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json")
 	curr := []scraping.Currency{}
-	done := make(chan bool)
-	go scraping.GetAllCurrency(&curr, 1, done)
-	<-done
+	scraping.GetAllCurrency(&curr, 1)
 	currArray := map[string][]scraping.Currency{
 		"digital_currencys": curr,
 	}
@@ -70,5 +64,5 @@ func Routers() {
 	router.HandleFunc("/api/digital/currencys/{currency}", GetOneDigitalCurrencys).Methods("GET")
 
 	fmt.Println("Server running on http://127.0.0.1:8080/")
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
+	log.Fatal(http.ListenAndServe(":8080", router))
 }

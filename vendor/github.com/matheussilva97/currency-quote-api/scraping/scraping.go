@@ -25,6 +25,7 @@ var digitalCurrencys = map[string]string{
 	"bitshares":             "https://dolarhoje.com/bitshares-hoje/",
 	"bytecoin":              "https://dolarhoje.com/bytecoin-hoje/",
 	"bytom":                 "https://dolarhoje.com/bytom-hoje/",
+	/*add more digital currencys*/
 }
 
 var currencys = map[string]string{
@@ -41,6 +42,7 @@ var currencys = map[string]string{
 	"peso uruguaio":     "https://dolarhoje.com/peso-uruguaio/",
 	"won sul-coreano":   "https://dolarhoje.com/won-sul-coreano-hoje/",
 	"yuan":              "https://dolarhoje.com/yuan-hoje/",
+	/*add more currencys*/
 }
 
 // 1 if you want to get digital currencys, or 0 if you want to get "normal" currencys
@@ -83,21 +85,30 @@ func GetCurrrency(currency string, typeCurrency int) Currency {
 	return Currency{currency, "R$ " + val, time.Now().Local().Format("2006-01-02")}
 }
 
+//GetCurrrencyChannel to implements goroutines
+func GetCurrrencyChannel(currency string, typeCurrency int, ch chan Currency) {
+	ch <- GetCurrrency(currency, typeCurrency)
+}
+
 // GetAllCurrency get all currencys
-func GetAllCurrency(curr *[]Currency, typeCurrency int, done chan bool) {
-	defer func() {
-		done <- true
-	}()
-	currentDate := time.Now().Local()
+func GetAllCurrency(curr *[]Currency, typeCurrency int) {
+	ch := make(chan Currency)
 	if typeCurrency == 1 {
 		for key := range digitalCurrencys {
-			c := GetCurrrency(key, typeCurrency)
-			*curr = append(*curr, Currency{key, c.Value, currentDate.Format("2006-01-02")})
+			go GetCurrrencyChannel(key, typeCurrency, ch)
+		}
+		for range digitalCurrencys {
+			c := <-ch
+			*curr = append(*curr, c)
 		}
 	} else if typeCurrency == 0 {
 		for key := range currencys {
-			c := GetCurrrency(key, typeCurrency)
-			*curr = append(*curr, Currency{key, c.Value, currentDate.Format("2006-01-02")})
+			go GetCurrrencyChannel(key, typeCurrency, ch)
+		}
+
+		for range currencys {
+			c := <-ch
+			*curr = append(*curr, c)
 		}
 	} else {
 		fmt.Println("Invalid parameter " + strconv.Itoa(typeCurrency))

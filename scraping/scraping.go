@@ -85,21 +85,30 @@ func GetCurrrency(currency string, typeCurrency int) Currency {
 	return Currency{currency, "R$ " + val, time.Now().Local().Format("2006-01-02")}
 }
 
+//GetCurrrencyChannel to implements goroutines
+func GetCurrrencyChannel(currency string, typeCurrency int, ch chan Currency) {
+	ch <- GetCurrrency(currency, typeCurrency)
+}
+
 // GetAllCurrency get all currencys
-func GetAllCurrency(curr *[]Currency, typeCurrency int, done chan bool) {
-	defer func() {
-		done <- true
-	}()
-	currentDate := time.Now().Local()
+func GetAllCurrency(curr *[]Currency, typeCurrency int) {
+	ch := make(chan Currency)
 	if typeCurrency == 1 {
 		for key := range digitalCurrencys {
-			c := GetCurrrency(key, typeCurrency)
-			*curr = append(*curr, Currency{key, c.Value, currentDate.Format("2006-01-02")})
+			go GetCurrrencyChannel(key, typeCurrency, ch)
+		}
+		for range digitalCurrencys {
+			c := <-ch
+			*curr = append(*curr, c)
 		}
 	} else if typeCurrency == 0 {
 		for key := range currencys {
-			c := GetCurrrency(key, typeCurrency)
-			*curr = append(*curr, Currency{key, c.Value, currentDate.Format("2006-01-02")})
+			go GetCurrrencyChannel(key, typeCurrency, ch)
+		}
+
+		for range currencys {
+			c := <-ch
+			*curr = append(*curr, c)
 		}
 	} else {
 		fmt.Println("Invalid parameter " + strconv.Itoa(typeCurrency))
