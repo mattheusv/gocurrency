@@ -57,6 +57,11 @@ func GetOneDigitalCurrencys(w http.ResponseWriter, r *http.Request) {
 
 // Routers provide endpoints
 func Routers() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		panic("$PORT not set")
+	}
+
 	router := mux.NewRouter().StrictSlash(true)
 
 	router.HandleFunc("/api/currencys", GetCurrencys).Methods("GET")
@@ -65,5 +70,5 @@ func Routers() {
 	router.HandleFunc("/api/digital/currencys/{currency}", GetOneDigitalCurrencys).Methods("GET")
 
 	fmt.Println("Server running on http://127.0.0.1:8080/")
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
+	log.Fatal(http.ListenAndServe(":"+port, router))
 }
