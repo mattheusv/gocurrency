@@ -19,11 +19,11 @@
 			"Rev": "cb4698366aa625048f3b815af6a0dea8aef9280a"
 		},
 		{
-			"ImportPath": "github.com/matheussilva97/currency-quote-api/api",
+			"ImportPath": "github.com/msalcantara/currency-quote-api/api",
 			"Rev": "f8496cf2235aa4f688b6308847db427665c7b2f7"
 		},
 		{
-			"ImportPath": "github.com/matheussilva97/currency-quote-api/scraping",
+			"ImportPath": "github.com/msalcantara/currency-quote-api/scraping",
 			"Rev": "f8496cf2235aa4f688b6308847db427665c7b2f7"
 		},
 		{
