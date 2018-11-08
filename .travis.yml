@@ -4,22 +4,16 @@ sudo: false
 
 language: go
 
-# Only the last two Go releases are supported by the Go team with security
-# updates. Any older versions be considered deprecated. Don't bother testing
-# with them.
+# go version.
 go:
-  -  1.10.2
+  -  1.11.2
 
 # Don't email me the results of the test runs.
 notifications:
     email: false
 
 before_script:
-  - go get github.com/gorilla/mux
-  - go get github.com/PuerkitoBio/goquery
-  - go get github.com/msalcantara/currency-quote-api/scraping
-  - go get github.com/msalcantara/currency-quote-api/api
-
+  - go build
 
 script: 
   - go test -v ./tests/

@@ -3,13 +3,16 @@ package tests
 import (
 	"testing"
 
-	"github.com/msalcantara/currency-quote-api/scraping"
+	"github.com/msalcantara/currency-quote-api/currency"
 )
 
 func TestGetCurrrencyDolar(t *testing.T) {
-	curr := scraping.GetCurrrency("dolar", 0)
+	curr, err := currency.GetCurrrency("dolar", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil")
 	}
 
@@ -17,9 +20,12 @@ func TestGetCurrrencyDolar(t *testing.T) {
 }
 
 func TestGetCurrrencyDolarAustraliano(t *testing.T) {
-	curr := scraping.GetCurrrency("dolar australiano", 0)
+	curr, err := currency.GetCurrrency("dolar australiano", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'dolar australiano'")
 	}
 
@@ -27,9 +33,12 @@ func TestGetCurrrencyDolarAustraliano(t *testing.T) {
 }
 
 func TestGetCurrrencyDolarCanadense(t *testing.T) {
-	curr := scraping.GetCurrrency("dolar canadense", 0)
+	curr, err := currency.GetCurrrency("dolar canadense", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'dolar canadense'")
 	}
 
@@ -37,9 +46,12 @@ func TestGetCurrrencyDolarCanadense(t *testing.T) {
 }
 
 func TestGetCurrrencyDolarNeozelandes(t *testing.T) {
-	curr := scraping.GetCurrrency("dolar neozelandes", 0)
+	curr, err := currency.GetCurrrency("dolar neozelandes", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'dolar neozelandes'")
 	}
 
@@ -47,18 +59,24 @@ func TestGetCurrrencyDolarNeozelandes(t *testing.T) {
 }
 
 func TestGetCurrrencyIene(t *testing.T) {
-	curr := scraping.GetCurrrency("iene", 0)
+	curr, err := currency.GetCurrrency("iene", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'iene'")
 	}
 
 	t.Logf("[PASSED] - value of iene is " + curr.Value)
 }
 func TestGetCurrrencyEuro(t *testing.T) {
-	curr := scraping.GetCurrrency("euro", 0)
+	curr, err := currency.GetCurrrency("euro", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'euro'")
 	}
 
@@ -66,9 +84,12 @@ func TestGetCurrrencyEuro(t *testing.T) {
 }
 
 func TestGetCurrrencyLibra(t *testing.T) {
-	curr := scraping.GetCurrrency("libra", 0)
+	curr, err := currency.GetCurrrency("libra", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'libra'")
 	}
 
@@ -76,9 +97,12 @@ func TestGetCurrrencyLibra(t *testing.T) {
 }
 
 func TestGetCurrrencyOuro(t *testing.T) {
-	curr := scraping.GetCurrrency("ouro", 0)
+	curr, err := currency.GetCurrrency("ouro", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'ouro'")
 	}
 
@@ -86,9 +110,12 @@ func TestGetCurrrencyOuro(t *testing.T) {
 }
 
 func TestGetCurrrencyPesoArgentino(t *testing.T) {
-	curr := scraping.GetCurrrency("peso argentino", 0)
+	curr, err := currency.GetCurrrency("peso argentino", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'peso argentino'")
 	}
 
@@ -96,9 +123,12 @@ func TestGetCurrrencyPesoArgentino(t *testing.T) {
 }
 
 func TestGetCurrrencyPesoChileno(t *testing.T) {
-	curr := scraping.GetCurrrency("peso chileno", 0)
+	curr, err := currency.GetCurrrency("peso chileno", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'peso chileno'")
 	}
 
@@ -106,9 +136,12 @@ func TestGetCurrrencyPesoChileno(t *testing.T) {
 }
 
 func TestGetCurrrencyPesoUruguaio(t *testing.T) {
-	curr := scraping.GetCurrrency("peso uruguaio", 0)
+	curr, err := currency.GetCurrrency("peso uruguaio", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'peso uruguaio'")
 	}
 
@@ -116,9 +149,12 @@ func TestGetCurrrencyPesoUruguaio(t *testing.T) {
 }
 
 func TestGetCurrrencyWonSuloreano(t *testing.T) {
-	curr := scraping.GetCurrrency("won sul-coreano", 0)
+	curr, err := currency.GetCurrrency("won sul-coreano", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'won sul-coreano'")
 	}
 
@@ -126,9 +162,12 @@ func TestGetCurrrencyWonSuloreano(t *testing.T) {
 }
 
 func TestGetCurrrencyYuan(t *testing.T) {
-	curr := scraping.GetCurrrency("yuan", 0)
+	curr, err := currency.GetCurrrency("yuan", currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'yuan'")
 	}
 
@@ -136,10 +175,11 @@ func TestGetCurrrencyYuan(t *testing.T) {
 }
 
 func TestGetAllCurrrencyt(t *testing.T) {
-	currency := []scraping.Currency{}
-	scraping.GetAllCurrency(&currency, 0)
-
-	if currency == nil {
+	curr, err := currency.GetAllCurrency(currency.TRADITIONAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
+	if curr == nil {
 		t.Fatalf("[FAILED] - Function retun nil to get all currencys")
 	}
 }
@@ -147,9 +187,12 @@ func TestGetAllCurrrencyt(t *testing.T) {
 /* === Digital currency tests ===*/
 
 func TestGetAeternity(t *testing.T) {
-	curr := scraping.GetCurrrency("aeternity", 1)
+	curr, err := currency.GetCurrrency("aeternity", currency.DIGITAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'aeternity'")
 	}
 
@@ -157,63 +200,85 @@ func TestGetAeternity(t *testing.T) {
 }
 
 func TestGetBasicAttentionToken(t *testing.T) {
-	curr := scraping.GetCurrrency("basic attention token", 1)
+	curr, err := currency.GetCurrrency("basic attention token", currency.DIGITAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'basic attention token'")
 	}
 
 	t.Logf("[PASSED] - value of basic attention token is " + curr.Value)
 }
 func TestGetBitcoin(t *testing.T) {
-	curr := scraping.GetCurrrency("bitcoin", 1)
+	curr, err := currency.GetCurrrency("bitcoin", currency.DIGITAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'bitcoin'")
 	}
 
 	t.Logf("[PASSED] - value of bitcoin is " + curr.Value)
 }
 func TestGetBitcoinCash(t *testing.T) {
-	curr := scraping.GetCurrrency("bitcoin cash", 1)
+	curr, err := currency.GetCurrrency("bitcoin cash", currency.DIGITAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'bitcoin cash'")
 	}
 
 	t.Logf("[PASSED] - value of bitcoin cash is " + curr.Value)
 }
 func TestGetbitcoinGold(t *testing.T) {
-	curr := scraping.GetCurrrency("bitcoin gold", 1)
+	curr, err := currency.GetCurrrency("bitcoin gold", currency.DIGITAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'bitcoin gold'")
 	}
 
 	t.Logf("[PASSED] - value of bitcoin gold is " + curr.Value)
 }
 func TestGetBitshares(t *testing.T) {
-	curr := scraping.GetCurrrency("bitshares", 1)
+	curr, err := currency.GetCurrrency("bitshares", currency.DIGITAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'bitshares'")
 	}
 
 	t.Logf("[PASSED] - value of bitshares is " + curr.Value)
 }
 func TestGetBytecoin(t *testing.T) {
-	curr := scraping.GetCurrrency("bytecoin", 1)
+	curr, err := currency.GetCurrrency("bytecoin", currency.DIGITAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if curr == (scraping.Currency{}) {
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'bytecoin'")
 	}
 
 	t.Logf("[PASSED] - value of bytecoin is " + curr.Value)
 }
-func TestGetBytom(t *testing.T) {
-	curr := scraping.GetCurrrency("bytom", 1)
 
-	if curr == (scraping.Currency{}) {
+func TestGetBytom(t *testing.T) {
+	curr, err := currency.GetCurrrency("bytom", currency.DIGITAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
+
+	if curr == (currency.Currency{}) {
 		t.Fatalf("[FAILED] - Function retun nil to param 'bytom'")
 	}
 
@@ -221,10 +286,12 @@ func TestGetBytom(t *testing.T) {
 }
 
 func TestGetAllDigitalCurrrencyt(t *testing.T) {
-	currency := []scraping.Currency{}
-	scraping.GetAllCurrency(&currency, 1)
+	curr, err := currency.GetAllCurrency(currency.DIGITAL)
+	if err != nil {
+		t.Errorf("Got error: %v", err)
+	}
 
-	if currency == nil {
+	if curr == nil {
 		t.Fatalf("[FAILED] - Function retun nil to get all currencys")
 	}
 }

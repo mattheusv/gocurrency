@@ -1,7 +1,11 @@
 package main
 
-import "github.com/msalcantara/currency-quote-api/api"
+import (
+	"github.com/msalcantara/currency-quote-api/api"
+	"github.com/msalcantara/currency-quote-api/config"
+)
 
 func main() {
-	api.Routers()
+	config.Load()
+	api.StartServer()
 }
