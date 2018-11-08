@@ -15,7 +15,6 @@ func StartServer() {
 	r := setHandler()
 	http.Handle("/", r)
 	addr := fmt.Sprintf("%s:%d", config.ReportConfig.HTTP.Host, config.ReportConfig.HTTP.Port)
-	log.SetPrefix("[report] ")
 	log.Printf("Server Running on https://%s/ (Press CTRL+C to quit)", addr)
 	if err := http.ListenAndServe(addr, nil); err != nil {
 		log.Fatalf("error to start server %v\n", err)
