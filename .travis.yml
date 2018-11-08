@@ -8,16 +8,14 @@ language: go
 go:
   -  1.11.2
 
-# Don't email me the results of the test runs.
-notifications:
-    email: false
+os:
+  - linux
+  - osx
 
-before_script:
-  - go get github.com/BurntSushi/toml
-  - github.com/PuerkitoBio/goquery
-  - go get github.com/gorilla/mux
-  - go get github.com/urfave/negroni
-  - go build
+
+install: true
+
 
 script: 
+  - env GO111MODULE=on go build 
   - go test -v ./tests/
