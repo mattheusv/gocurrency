@@ -1,8 +1,9 @@
 package api
 
 import (
-	"errors"
 	"net/http"
+
+	"github.com/msalcantara/currency-quote-api/errors"
 )
 
 //notFound default error handler to 404 page not found
