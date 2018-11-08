@@ -8,45 +8,37 @@ import (
 )
 
 const (
-	reportConfigFile = "currency.toml"
+	configFile = "currency.toml"
 )
 
 var (
-	//ReportConfig struct export config
-	ReportConfig *report
+	//Config struct export config
+	Config *config
 )
 
-type report struct {
+type config struct {
 	HTTP struct {
 		Host string
 		Port int
 	}
-	Mongo struct {
-		Host     string
-		User     string
-		Password string
-		Source   string
-		Port     int
-		DataBase string
-	}
 }
 
-//Load load report config
+//Load load config
 func Load() {
-	ReportConfig = &report{}
-	if err := parse(ReportConfig); err != nil {
+	Config = &config{}
+	if err := parse(Config); err != nil {
 		log.Fatalf("erro to parse config\n %v", err)
 	}
 
 }
 
-func parse(report *report) error {
-	tomlFile, err := ioutil.ReadFile(reportConfigFile)
+func parse(c *config) error {
+	tomlFile, err := ioutil.ReadFile(configFile)
 	if err != nil {
 		return err
 	}
 
-	if _, err := toml.Decode(string(tomlFile), report); err != nil {
+	if _, err := toml.Decode(string(tomlFile), c); err != nil {
 		return err
 	}
 	return nil

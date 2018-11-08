@@ -18,9 +18,9 @@ func StartServer() {
 	http.Handle("/", r)
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = strconv.Itoa(config.ReportConfig.HTTP.Port)
+		port = strconv.Itoa(config.Config.HTTP.Port)
 	}
-	addr := fmt.Sprintf("%s:%s", config.ReportConfig.HTTP.Host, port)
+	addr := fmt.Sprintf("%s:%s", config.Config.HTTP.Host, port)
 	log.Printf("Server Running on https://%s/ (Press CTRL+C to quit)", addr)
 	if err := http.ListenAndServe(addr, nil); err != nil {
 		log.Fatalf("error to start server %v\n", err)
@@ -30,10 +30,10 @@ func StartServer() {
 func setHandler() http.Handler {
 	r := initRouter()
 	n := initNegroni()
-	r.HandleFunc("/api/currencys", GetCurrencys).Methods("GET")
-	r.HandleFunc("/api/currencys/{currency}", GetOneCurrency).Methods("GET")
-	r.HandleFunc("/api/digital/currencys", GetDigitalCurrencys).Methods("GET")
-	r.HandleFunc("/api/digital/currencys/{currency}", GetOneDigitalCurrencys).Methods("GET")
+	r.HandleFunc("/api/currencys", getCurrencys).Methods("GET")
+	r.HandleFunc("/api/currencys/{currency}", getOneCurrency).Methods("GET")
+	r.HandleFunc("/api/digital/currencys", getDigitalCurrencys).Methods("GET")
+	r.HandleFunc("/api/digital/currencys/{currency}", getOneDigitalCurrencys).Methods("GET")
 	n.UseHandler(r)
 	return n
 }

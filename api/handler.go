@@ -7,8 +7,8 @@ import (
 	"github.com/msalcantara/currency-quote-api/currency"
 )
 
-// GetCurrencys get all currencys
-func GetCurrencys(w http.ResponseWriter, r *http.Request) {
+//getCurrencys get all traditional currencys
+func getCurrencys(w http.ResponseWriter, r *http.Request) {
 	curr, err := currency.GetAllCurrency(currency.TRADITIONAL)
 	if err != nil {
 		writeError(w, err, http.StatusBadRequest)
@@ -20,8 +20,8 @@ func GetCurrencys(w http.ResponseWriter, r *http.Request) {
 	writeResponse(w, currArray)
 }
 
-// GetOneCurrency get currency of parameter
-func GetOneCurrency(w http.ResponseWriter, r *http.Request) {
+//getOneCurrency get traditional currency of parameter
+func getOneCurrency(w http.ResponseWriter, r *http.Request) {
 	param := mux.Vars(r)
 	curr, err := currency.GetCurrrency(param["currency"], currency.TRADITIONAL)
 	if err != nil {
@@ -34,8 +34,8 @@ func GetOneCurrency(w http.ResponseWriter, r *http.Request) {
 	writeResponse(w, currResponse)
 }
 
-// GetDigitalCurrencys get all digital currencys
-func GetDigitalCurrencys(w http.ResponseWriter, r *http.Request) {
+//getDigitalCurrencys get all digital currencys
+func getDigitalCurrencys(w http.ResponseWriter, r *http.Request) {
 	curr, err := currency.GetAllCurrency(currency.DIGITAL)
 	if err != nil {
 		writeError(w, err, http.StatusBadRequest)
@@ -47,8 +47,8 @@ func GetDigitalCurrencys(w http.ResponseWriter, r *http.Request) {
 	writeResponse(w, currArray)
 }
 
-// GetOneDigitalCurrencys get digital currency of parameter
-func GetOneDigitalCurrencys(w http.ResponseWriter, r *http.Request) {
+//getOneDigitalCurrencys get digital currency of parameter
+func getOneDigitalCurrencys(w http.ResponseWriter, r *http.Request) {
 	param := mux.Vars(r)
 	curr, err := currency.GetCurrrency(param["currency"], currency.DIGITAL)
 	if err != nil {
