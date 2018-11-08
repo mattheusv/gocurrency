@@ -1,4 +1,4 @@
-# currency-quote-api
+# currency-quote-api ![Build Status](https://travis-ci.org/msalcantara/currency-quote-api.svg?branch=master)
 - web scraping to provide currency quote data in REST api
 - API collects data from various websites to capture the currency quote and make it available in the urls
 
