@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/msalcantara/currency-quote-api/currency"
+	"github.com/msalcantara/gocurrency/currency"
 )
 
 func TestGetCurrrencyDolar(t *testing.T) {
