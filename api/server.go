@@ -30,10 +30,10 @@ func StartServer() {
 func setHandler() http.Handler {
 	r := initRouter()
 	n := initNegroni()
-	r.HandleFunc("/api/currencys", getCurrencys).Methods("GET")
-	r.HandleFunc("/api/currencys/{currency}", getOneCurrency).Methods("GET")
-	r.HandleFunc("/api/digital/currencys", getDigitalCurrencys).Methods("GET")
-	r.HandleFunc("/api/digital/currencys/{currency}", getOneDigitalCurrencys).Methods("GET")
+	r.HandleFunc("/api/currencys", GetCurrencys).Methods("GET")
+	r.HandleFunc("/api/currencys/{currency}", GetOneCurrency).Methods("GET")
+	r.HandleFunc("/api/digital/currencys", GetDigitalCurrencys).Methods("GET")
+	r.HandleFunc("/api/digital/currencys/{currency}", GetOneDigitalCurrencys).Methods("GET")
 	n.UseHandler(r)
 	return n
 }
