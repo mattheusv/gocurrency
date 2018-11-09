@@ -1,5 +1,11 @@
 package currency
 
+import (
+	"fmt"
+
+	"github.com/msalcantara/gocurrency/errors"
+)
+
 // Currency struct
 type Currency struct {
 	Name             string `json:"currency_name"`
@@ -8,13 +14,14 @@ type Currency struct {
 }
 
 const (
-	//TRADITIONAL ...
+	//TRADITIONAL traditional currencys
 	TRADITIONAL = 1
-	//DIGITAL ...
+	//DIGITAL digital currencys
 	DIGITAL = 0
 )
 
-//GetCurrrency ...
+//GetCurrrency get specific currecy by name and type
+//type = TRADITIONAL or DIGITAL
 func GetCurrrency(name string, t int) (Currency, error) {
 	switch t {
 	case TRADITIONAL:
@@ -32,11 +39,12 @@ func GetCurrrency(name string, t int) (Currency, error) {
 		}
 		return c, nil
 	default:
-		return Currency{}, nil
+		return Currency{}, errors.New(fmt.Sprintf("invalid type of currency %d", t))
 	}
 }
 
-//GetAllCurrency ...
+//GetAllCurrency get all currecys by type
+//type = TRADITIONAL or DIGITAL
 func GetAllCurrency(t int) ([]Currency, error) {
 	switch t {
 	case TRADITIONAL:
@@ -54,6 +62,6 @@ func GetAllCurrency(t int) ([]Currency, error) {
 		}
 		return c, nil
 	default:
-		return nil, nil
+		return nil, errors.New(fmt.Sprintf("invalid type of currency %d", t))
 	}
 }
