@@ -6,17 +6,17 @@
 
 - All traditional currencys
 
-```https://currency-quote.herokuapp.com/api/currencys``` 
+```https://gocurrency.herokuapp.com/api/currencys``` 
 
 - Find by specific traditional currency
 
-```https://currency-quote.herokuapp.com/api/currencys/dolar``` 
+```https://gocurrency.herokuapp.com/api/currencys/dolar``` 
 
 
 - All digital currencys
 
-```https://currency-quote.herokuapp.com/api/digital/currencys``` 
+```https://gocurrency.herokuapp.com/api/digital/currencys``` 
 
 - Find by specific digital currency
 
-```https://currency-quote.herokuapp.com/api/digital/currencys/bitcoin``` 
+```https://gocurrency.herokuapp.com/api/digital/currencys/bitcoin``` 
