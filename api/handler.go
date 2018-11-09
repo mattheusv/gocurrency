@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/msalcantara/currency-quote-api/currency"
+	"github.com/msalcantara/gocurrency/currency"
 )
 
 //getCurrencys get all traditional currencys

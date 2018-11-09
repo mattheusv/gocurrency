@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/msalcantara/currency-quote-api/errors"
+	"github.com/msalcantara/gocurrency/errors"
 )
 
 type response struct {

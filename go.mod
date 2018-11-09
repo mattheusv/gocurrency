@@ -1,4 +1,4 @@
-module github.com/msalcantara/currency-quote-api
+module github.com/msalcantara/gocurrency
 
 require (
 	github.com/BurntSushi/toml v0.3.1

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/msalcantara/currency-quote-api/api"
-	"github.com/msalcantara/currency-quote-api/config"
+	"github.com/msalcantara/gocurrency/api"
+	"github.com/msalcantara/gocurrency/config"
 )
 
 func main() {

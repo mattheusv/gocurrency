@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/msalcantara/currency-quote-api/errors"
+	"github.com/msalcantara/gocurrency/errors"
 )
 
 var digitalCurrencys = map[string]string{

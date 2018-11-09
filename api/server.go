@@ -8,7 +8,7 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
-	"github.com/msalcantara/currency-quote-api/config"
+	"github.com/msalcantara/gocurrency/config"
 	"github.com/urfave/negroni"
 )
 

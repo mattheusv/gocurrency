@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	"github.com/msalcantara/currency-quote-api/errors"
+	"github.com/msalcantara/gocurrency/errors"
 )
 
 //notFound default error handler to 404 page not found
