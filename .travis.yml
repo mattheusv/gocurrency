@@ -1,7 +1,7 @@
 language: go
 
 go:
-  -  1.11.2
+  -  1.13
 
 os:
   - linux
@@ -12,6 +12,6 @@ install: true
 env:
   GO111MODULE=on
 
-script: 
-  - go build 
-  - go test -v ./tests/
+script:
+  - go build
+  - go test -v ./...
